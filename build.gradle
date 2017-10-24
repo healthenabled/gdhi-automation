@@ -1,0 +1,36 @@
+apply plugin: 'java'
+apply plugin: 'gauge'
+apply plugin: 'application'
+
+group = "gdhi-automation"
+version = "1.0"
+
+description = "Gauge WebDriver tests for GDHI project"
+
+sourceCompatibility = 1.8
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.thoughtworks.gauge.gradle:gauge-gradle-plugin:+'
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile (
+        'com.thoughtworks.gauge:gauge-java:+',
+        'junit:junit:+',
+        'org.seleniumhq.selenium:selenium-java:+',
+        'org.json:json:+'
+    )
+}
+
+gauge {
+    specsDir = "specs"
+}

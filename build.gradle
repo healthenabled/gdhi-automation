@@ -33,4 +33,5 @@ dependencies {
 
 gauge {
     specsDir = "specs"
+    additionalFlags = "--verbose"
 }

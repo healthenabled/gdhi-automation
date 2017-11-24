@@ -4,7 +4,10 @@ import com.thoughtworks.gauge.AfterSuite;
 import com.thoughtworks.gauge.BeforeSuite;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
+import java.util.concurrent.TimeUnit;
 
 public class Driver {
 
@@ -19,10 +22,18 @@ public class Driver {
 
         if (browser.toLowerCase().equals("chrome")) {
             System.setProperty("webdriver.chrome.driver", System.getenv("CHROME_DRIVER_PATH"));
-            webDriver = new ChromeDriver();
+            if (System.getenv("CHROME_HEADLESS") != null) {
+                ChromeOptions chromeOptions = new ChromeOptions();
+                chromeOptions.addArguments("headless");
+                chromeOptions.addArguments("window-size=1280x800");
+                webDriver = new ChromeDriver(chromeOptions);
+            } else {
+                webDriver = new ChromeDriver();
+            }
         }
 
         webDriver.manage().window().maximize();
+        webDriver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
     }
 
     private static void stopDriver() {

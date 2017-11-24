@@ -1,3 +1,5 @@
+import com.thoughtworks.gauge.gradle.GaugeTask
+
 apply plugin: 'java'
 apply plugin: 'gauge'
 apply plugin: 'application'
@@ -34,4 +36,14 @@ dependencies {
 gauge {
     specsDir = "specs"
     additionalFlags = "--verbose"
+}
+
+task gaugeCI(type: GaugeTask) {
+    doFirst {
+        gauge {
+            specsDir = 'specs'
+            env = 'ci'
+            additionalFlags = '--verbose'
+        }
+    }
 }

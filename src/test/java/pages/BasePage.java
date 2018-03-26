@@ -79,4 +79,10 @@ class BasePage {
         focusOnElement(element);
         element.sendKeys(text);
     }
+
+    void scrollToElementAndClick(WebElement element){
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element).sendKeys(Keys.ENTER);
+        actions.perform();
+    }
 }

@@ -8,16 +8,20 @@ import static org.junit.Assert.assertTrue;
 public class InputFormSteps extends BaseStep {
     @Step("User navigates to the input form")
     public void User_goes_to_the_input_form() {
+
         inputForm.visit();
+        inputForm.validateQuestionnaireHeading();
     }
 
     @Step("User submits the form without entering any details")
-    public void User_submits_empty_form() {
+    public void User_submits_empty_form() throws Exception {
+
         inputForm.submitForm();
     }
 
     @Step("User should see error messages for the mandatory fields")
     public void User_sees_mandatory_field_errors() {
+
         assertTrue(inputForm.doesFormHaveErrors());
     }
 

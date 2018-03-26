@@ -10,7 +10,7 @@ import java.util.List;
 
 public class InputForm extends BasePage {
 
-    @FindBy(css = ".submit-btn")
+    @FindBy(className = "submit-btn")
     private WebElement submitButton;
 
     @FindBy(id = "countryName")
@@ -70,7 +70,11 @@ public class InputForm extends BasePage {
     @FindBy(css = ".success")
     private WebElement successMessage;
 
+    @FindBy( id = "health-indicator-questionnaire-heading")
+    private WebElement questionnaireHeading;
+
     public InputForm() {
+
         PageFactory.initElements(driver, this);
     }
 
@@ -79,8 +83,13 @@ public class InputForm extends BasePage {
     }
 
     public void submitForm() {
+        sleep(1);
+//        scrollToElementAndClick(submitButton);
         focusOnElement(submitButton);
         submitButton.click();
+//        waitForElementToBeClickable(submitButton).click();
+//        waitForElementToBeClickable(submitButton).click();
+//        submitButton.click();
     }
 
     public boolean doesFormHaveErrors() {
@@ -142,5 +151,10 @@ public class InputForm extends BasePage {
         focusOnElement(score);
         waitForElementToBeClickable(score);
         score.click();
+    }
+
+    public void validateQuestionnaireHeading() {
+//        sleep(2);
+        assert (questionnaireHeading.getText().contains("GDHI Country Data Collection Form"));
     }
 }

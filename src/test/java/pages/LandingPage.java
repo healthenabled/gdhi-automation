@@ -31,34 +31,42 @@ public class LandingPage extends BasePage {
     private WebElement categoryName;
 
     public LandingPage() {
+
         PageFactory.initElements(driver, this);
     }
 
     public void visit() {
+
         visitUrl(System.getenv("APP_BASE_URL"));
     }
 
     public void waitForPageToLoad() {
-        waitForElementToBeVisible(panelButton);
-    }
+
+            waitForElementToBeVisible(panelButton);
+        }
 
     public String getIndicatorPanelName() {
+
         return waitForElementToBeVisible(panelName).getText();
     }
 
     public String getPanelButtonName() {
+
         return waitForElementToBeVisible(panelButton).getText();
     }
 
     public boolean doesDigitalHealthDataAppear() {
+
         return isElementVisible(categoryName);
     }
 
     public boolean doesDigitalHealthDataErrorAppear() {
-        return isElementVisible(panelError);
+
+            return isElementVisible(panelError);
     }
 
     public boolean doesContextSectionAppear() {
+
         return isElementVisible(contextSection);
     }
 
@@ -73,10 +81,12 @@ public class LandingPage extends BasePage {
     }
 
     public void visitCountryDetails() {
+
         visitListOfCountries();
     }
 
     public boolean isListOfCountriesAvailable() {
+
         return isElementVisible(countriesList);
     }
 }

@@ -26,8 +26,9 @@ build/
 .gradle/
 .gauge/
 .idea/
-*.iml
+*.iml/
 logs/
+*.iml
 
 
 

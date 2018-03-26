@@ -15,12 +15,13 @@ public class LandingPageSteps extends BaseStep {
 
     @Step("The default map view appears")
     public void The_default_map_view_appears() {
-        assertEquals(landingPage.getIndicatorPanelName(), "Average Global Digital Health Phase");
+        assertEquals(landingPage.getIndicatorPanelName(), "State of Digital Health around the world today");
         assertEquals(landingPage.getPanelButtonName(), "VIEW LIST OF COUNTRIES");
     }
 
     @Step("User goes to the map page")
     public void User_goes_to_the_map_page() {
+
         landingPage.visit();
     }
 
@@ -36,6 +37,7 @@ public class LandingPageSteps extends BaseStep {
 
     @Step("User will see the context data in the map panel")
     public void User_sees_the_context_data() {
+
         assertTrue(landingPage.doesContextSectionAppear());
     }
 

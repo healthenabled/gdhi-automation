@@ -28,11 +28,19 @@ public class Driver {
                 chromeOptions.addArguments("window-size=1280x800");
                 webDriver = new ChromeDriver(chromeOptions);
             } else {
-                webDriver = new ChromeDriver();
+                System.out.println("Starting ChromeDriver...");
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("--kiosk");
+                options.addArguments("--no-sandbox");
+//                options.addArguments("--start-maximized");
+////                 options.addArguments("--start-fullscreen");
+                webDriver = new ChromeDriver(options);
+//                webDriver.manage().window().maximize();
             }
         }
 
-        webDriver.manage().window().maximize();
+        System.out.println("About webdriver..." + webDriver.toString());
+//        webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
     }
 

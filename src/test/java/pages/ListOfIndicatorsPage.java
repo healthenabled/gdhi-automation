@@ -10,6 +10,7 @@ public class ListOfIndicatorsPage extends BasePage {
     private WebElement indicatorsTable;
 
     public ListOfIndicatorsPage() {
+
         PageFactory.initElements(driver, this);
     }
 

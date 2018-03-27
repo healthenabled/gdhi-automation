@@ -86,6 +86,7 @@ public class InputForm extends BasePage {
         sleep(1);
 //        scrollToElementAndClick(submitButton);
         focusOnElement(submitButton);
+        sleep(1);
         submitButton.click();
 //        waitForElementToBeClickable(submitButton).click();
 //        waitForElementToBeClickable(submitButton).click();

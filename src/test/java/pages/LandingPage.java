@@ -9,6 +9,9 @@ public class LandingPage extends BasePage {
     @FindBy(css = ".indicator-panel-button")
     private WebElement panelButton;
 
+    @FindBy(css = ".indicator-panel")
+    private WebElement indicatorPanelbox;
+
     @FindBy(css = ".indicator-panel-container-name")
     private WebElement panelName;
 
@@ -21,6 +24,9 @@ public class LandingPage extends BasePage {
     @FindBy(id = "search-box")
     private WebElement searchBox;
 
+    @FindBy(css = "div .autocomplete__inputs input")
+    private WebElement autocompleteTextBox;
+
     @FindBy(css = ".countries-list-heading")
     private WebElement listOfCountriesHeading;
 
@@ -29,6 +35,9 @@ public class LandingPage extends BasePage {
 
     @FindBy(css = ".indicator-panel-container-category-section-name")
     private WebElement categoryName;
+
+    @FindBy(css = "a[href='/indicators_info']")
+    private WebElement listOfIndicatorFooterLink;
 
     public LandingPage() {
 
@@ -56,22 +65,19 @@ public class LandingPage extends BasePage {
     }
 
     public boolean doesDigitalHealthDataAppear() {
-
         return isElementVisible(categoryName);
     }
 
     public boolean doesDigitalHealthDataErrorAppear() {
-
-            return isElementVisible(panelError);
+        return isElementVisible(panelError);
     }
 
     public boolean doesContextSectionAppear() {
-
         return isElementVisible(contextSection);
     }
 
     public void searchForCountry(String countryName) {
-        autoCompleteSearch(searchBox, "eac-container-search-box", countryName);
+        autoCompleteSearch(autocompleteTextBox, countryName);
         sleep(5);
     }
 
@@ -81,12 +87,14 @@ public class LandingPage extends BasePage {
     }
 
     public void visitCountryDetails() {
-
         visitListOfCountries();
     }
 
     public boolean isListOfCountriesAvailable() {
-
         return isElementVisible(countriesList);
+    }
+
+    public void visitListOfIndicators() {
+        listOfIndicatorFooterLink.click();
     }
 }

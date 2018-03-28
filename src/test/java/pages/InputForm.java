@@ -121,6 +121,7 @@ public class InputForm extends BasePage {
     }
 
     public boolean isSubmittedSuccessfully() {
+
         return isElementVisible(successMessage);
     }
 

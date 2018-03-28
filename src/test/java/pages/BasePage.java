@@ -67,6 +67,16 @@ class BasePage {
         sleep(0.5);
         waitForElementToBeClickable(By.xpath("//div[@id='" + autoCompleteElementId + "']//b[text()='" + searchText + "']/../..")).click();
     }
+    void autoCompleteSearch(WebElement textbox,String searchText){
+        waitForElementToBeVisible(textbox);
+        sleep(2);
+        textbox.clear();
+        textbox.sendKeys(searchText);
+        textbox.sendKeys(Keys.ENTER);
+        textbox.sendKeys(Keys.ARROW_DOWN,Keys.ENTER);
+
+
+    }
 
     void focusOnElement(WebElement element) {
         Actions action = new Actions(driver);
@@ -84,5 +94,10 @@ class BasePage {
         Actions actions = new Actions(driver);
         actions.moveToElement(element).sendKeys(Keys.ENTER);
         actions.perform();
+    }
+
+
+    public List<WebElement> getListofElements(By xpath) {
+        return driver.findElements(xpath);
     }
 }

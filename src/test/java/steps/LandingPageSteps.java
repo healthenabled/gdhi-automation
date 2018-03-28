@@ -16,7 +16,7 @@ public class LandingPageSteps extends BaseStep {
     @Step("The default map view appears")
     public void The_default_map_view_appears() {
         assertEquals(landingPage.getIndicatorPanelName(), "State of Digital Health around the world today");
-        assertEquals(landingPage.getPanelButtonName(), "VIEW LIST OF COUNTRIES");
+        assertEquals(landingPage.getPanelButtonName().toLowerCase(), "VIEW LIST OF COUNTRIES".toLowerCase());
     }
 
     @Step("User goes to the map page")
@@ -56,4 +56,10 @@ public class LandingPageSteps extends BaseStep {
     public void User_goes_to_country_details_page() {
         landingPage.visitCountryDetails();
     }
+
+    @Step("User navigates to the list of indicators page")
+    public void user_navigates_to_list_of_indicators() {
+        landingPage.visitListOfIndicators();
+        assertTrue(listOfIndicatorsPage.isLoaded());
+        }
 }

@@ -33,16 +33,11 @@ dependencies {
     )
 }
 
-gauge {
-    specsDir = "specs"
-    additionalFlags = "--verbose"
-}
-
-task gaugeCI(type: GaugeTask) {
+task gaugeQA(type: GaugeTask) {
     doFirst {
         gauge {
             specsDir = 'specs'
-            env = 'ci'
+            env = 'qa'
             additionalFlags = '--verbose'
         }
     }

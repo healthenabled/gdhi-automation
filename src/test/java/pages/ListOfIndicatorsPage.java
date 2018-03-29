@@ -35,6 +35,4 @@ public class ListOfIndicatorsPage extends BasePage {
         }
         return actualIndicators;
     }
-
-
 }

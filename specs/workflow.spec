@@ -19,7 +19,7 @@ This scenario verifies the various functionalities related to the overall digita
 * User goes to the methodology page
 * User goes to the list of indicators page from the methodology page
 * User goes to the map page
-* User searches for "India"
+* User searches for "Sri Lanka"
 * User should see the digital health indicator data
 * User goes the country details page
-//* User should see the data they have submitted for "India"
+//* User should see the data they have submitted for "Sri Lanka"

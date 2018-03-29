@@ -47,6 +47,7 @@ public class LandingPage extends BasePage {
     public void visit() {
 
         visitUrl(System.getenv("APP_BASE_URL"));
+        System.out.println("Opening URL "+System.getenv("APP_BASE_URL"));
     }
 
     public void waitForPageToLoad() {

@@ -8,7 +8,6 @@ import static org.junit.Assert.assertTrue;
 public class InputFormSteps extends BaseStep {
     @Step("User navigates to the input form")
     public void User_goes_to_the_input_form() {
-
         inputForm.visit();
         inputForm.validateQuestionnaireHeading();
     }

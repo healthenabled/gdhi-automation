@@ -10,7 +10,7 @@ import java.util.List;
 
 public class InputForm extends BasePage {
 
-    @FindBy(className = "submit-btn")
+    @FindBy(xpath = "//button[@class='submit-btn btn btn-green']/i")
     private WebElement submitButton;
 
     @FindBy(id = "countryName")
@@ -83,14 +83,9 @@ public class InputForm extends BasePage {
     }
 
     public void submitForm() {
-        sleep(1);
-//        scrollToElementAndClick(submitButton);
-        focusOnElement(submitButton);
-        sleep(1);
+        sleep(2);
         submitButton.click();
-//        waitForElementToBeClickable(submitButton).click();
-//        waitForElementToBeClickable(submitButton).click();
-//        submitButton.click();
+
     }
 
     public boolean doesFormHaveErrors() {
@@ -159,4 +154,5 @@ public class InputForm extends BasePage {
 //        sleep(2);
         assert (questionnaireHeading.getText().contains("GDHI Country Data Collection Form"));
     }
+
 }

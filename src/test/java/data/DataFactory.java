@@ -43,6 +43,7 @@ public class DataFactory {
         data.put("indicator17Score", "1");
         data.put("indicator18Score", "2");
         data.put("indicator19Score", "2");
+        data.put("resourcesText","Resources");
         return data;
     }
 }

@@ -30,14 +30,17 @@ public class LandingPage extends BasePage {
     @FindBy(css = ".countries-list-heading")
     private WebElement listOfCountriesHeading;
 
-    @FindBy(css = ".countries-list-details")
-    private WebElement countriesList;
-
     @FindBy(css = ".indicator-panel-container-category-section-name")
     private WebElement categoryName;
 
-    @FindBy(css = "a[href='/indicators_info']")
+    @FindBy(css = "//div[@class='footer']//span/a[@href='/methodology']")
+    private WebElement footerMethodologyLink;
+
+    @FindBy(css = "//div[@class='footer']//span/a[@href='/indicators_info']")
     private WebElement listOfIndicatorFooterLink;
+
+    @FindBy(css = "//div[@class='footer']//span/a[@href='/api/export_global_data']")
+    private WebElement exportGlobalDataLink;
 
     public LandingPage() {
 
@@ -91,11 +94,21 @@ public class LandingPage extends BasePage {
         visitListOfCountries();
     }
 
-    public boolean isListOfCountriesAvailable() {
-        return isElementVisible(countriesList);
-    }
 
     public void visitListOfIndicators() {
         listOfIndicatorFooterLink.click();
+    }
+
+    public boolean verifyFooterMethodologyLinkIsVisible() {
+        return isElementVisible(footerMethodologyLink);
+    }
+
+    public boolean verifyIndicatorsLink() {
+
+        return isElementVisible(listOfIndicatorFooterLink);
+    }
+
+    public boolean verifyExportCountryDataLink() {
+        return isElementVisible(exportGlobalDataLink);
     }
 }

@@ -115,6 +115,7 @@ public class InputForm extends BasePage {
         submitForm();
     }
 
+
     public boolean isSubmittedSuccessfully() {
 
         return isElementVisible(successMessage);
@@ -155,4 +156,7 @@ public class InputForm extends BasePage {
         assert (questionnaireHeading.getText().contains("GDHI Country Data Collection Form"));
     }
 
+    public void navigateToQuestionnairePage(String URL) {
+        visitUrl(URL);
+    }
 }

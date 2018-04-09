@@ -29,11 +29,17 @@ public class CountryPage extends BasePage {
     @FindBy(css = ".country-text")
     private WebElement countrySummaryText;
 
+    @FindBy(css = ".country-summary-title")
+    private WebElement resourcesText;
+
+    @FindBy(css = "//ul[@class='country-text']")
+    private WebElement resourcesSection;
+
     public CountryPage() {
         PageFactory.initElements(driver, this);
     }
 
-    public boolean areDetailsValid(HashMap<String, String> data) {
+    public boolean  areDetailsValid(HashMap<String, String> data) {
         boolean isValid;
         isValid = countryNameHeading.getText().equals(data.get("countryName"));
         isValid = isValid && isElementVisible(overallScore);
@@ -41,6 +47,8 @@ public class CountryPage extends BasePage {
         isValid = isValid && isElementVisible(developmentIndicatorSection);
         isValid = isValid && isElementVisible(exportLink);
         isValid = isValid && countrySummaryText.getText().equals(data.get("countrySummary"));
+        isValid = isValid && resourcesText.getText().equalsIgnoreCase(data.get("resourcesText"));
+        isValid = isValid && isElementVisible(resourcesSection);
         return isValid;
     }
 }

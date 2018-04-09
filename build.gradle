@@ -1,15 +1,38 @@
 import com.thoughtworks.gauge.gradle.GaugeTask
 
-apply plugin: 'java'
-apply plugin: 'gauge'
-apply plugin: 'application'
-
 group = "gdhi-automation"
 version = "1.0"
-
 description = "Gauge WebDriver tests for GDHI project"
 
-sourceCompatibility = 1.8
+
+apply plugin: 'java'
+apply plugin: 'gauge'
+
+
+task gaugeQA(type: GaugeTask) {
+    doFirst {
+        println 'Running tests in QA environment...'
+        gauge {
+            specsDir = 'specs'
+            env = 'qa'
+            additionalFlags = '--verbose'
+        }
+    }
+}
+
+
+project.ext {
+    junitVersion = '4.12'
+    seleniumVersion = '3.11.0'
+    gaugeVersion = '0.6.6'
+}
+
+dependencies {
+    testCompile 'junit:junit:' + junitVersion
+    testCompile 'org.seleniumhq.selenium:selenium-java:' + seleniumVersion
+    testCompile 'com.thoughtworks.gauge:gauge-java:' + gaugeVersion
+    testCompile   'org.json:json:+'
+}
 
 buildscript {
     repositories {
@@ -22,23 +45,4 @@ buildscript {
 
 repositories {
     mavenCentral()
-}
-
-dependencies {
-    testCompile (
-        'com.thoughtworks.gauge:gauge-java:+',
-        'junit:junit:+',
-        'org.seleniumhq.selenium:selenium-java:+',
-        'org.json:json:+'
-    )
-}
-
-task gaugeQA(type: GaugeTask) {
-    doFirst {
-        gauge {
-            specsDir = 'specs'
-            env = 'qa'
-            additionalFlags = '--verbose'
-        }
-    }
 }

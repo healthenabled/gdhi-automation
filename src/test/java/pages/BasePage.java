@@ -67,6 +67,7 @@ class BasePage {
         sleep(0.5);
         waitForElementToBeClickable(By.xpath("//div[@id='" + autoCompleteElementId + "']//b[text()='" + searchText + "']/../..")).click();
     }
+
     void autoCompleteSearch(WebElement textbox,String searchText){
         waitForElementToBeVisible(textbox);
         sleep(2);
@@ -74,8 +75,6 @@ class BasePage {
         textbox.sendKeys(searchText);
         textbox.sendKeys(Keys.ENTER);
         textbox.sendKeys(Keys.ARROW_DOWN,Keys.ENTER);
-
-
     }
 
     void focusOnElement(WebElement element) {
@@ -100,4 +99,5 @@ class BasePage {
     public List<WebElement> getListofElements(By xpath) {
         return driver.findElements(xpath);
     }
+
 }

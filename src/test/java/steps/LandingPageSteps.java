@@ -46,11 +46,6 @@ public class LandingPageSteps extends BaseStep {
         assertTrue(landingPage.doesDigitalHealthDataAppear());
     }
 
-    @Step("User views the list of countries")
-    public void User_goes_to_list_of_countries_page() {
-        landingPage.visitListOfCountries();
-        assertTrue(landingPage.isListOfCountriesAvailable());
-    }
 
     @Step("User goes the country details page")
     public void User_goes_to_country_details_page() {
@@ -61,5 +56,12 @@ public class LandingPageSteps extends BaseStep {
     public void user_navigates_to_list_of_indicators() {
         landingPage.visitListOfIndicators();
         assertTrue(listOfIndicatorsPage.isLoaded());
-        }
+    }
+
+    @Step("User should see the footer information")
+    public void verify_footer_details() {
+        assertTrue(landingPage.verifyFooterMethodologyLinkIsVisible());
+        assertTrue(landingPage.verifyIndicatorsLink());
+        assertTrue(landingPage.verifyExportCountryDataLink());
+    }
 }

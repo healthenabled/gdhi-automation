@@ -35,7 +35,6 @@ public class AdminPageSteps extends BaseStep {
     @Step("User navigates to the input form for <Sri Lanka>")
     public void navigateToQuestionnaireForm(String countryName) {
         inputForm.navigateToQuestionnairePage(specDataStore.get(countryName).toString());
-
-
+        inputForm.isQuestionnaireFormOpenedFor(countryName);
     }
 }

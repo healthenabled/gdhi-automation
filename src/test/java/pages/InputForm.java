@@ -1,5 +1,6 @@
 package pages;
 
+import com.thoughtworks.gauge.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -31,13 +32,13 @@ public class InputForm extends BasePage {
     @FindBy(id = "emailOfPersonEnteringData")
     private WebElement dataEntryEmail;
 
-    @FindBy(id = "nameofPersonCollectedData")
+    @FindBy(id = "nameofPersonApprovedData")
     private WebElement dataCollectorName;
 
-    @FindBy(id = "roleofPersonCollectedData")
+    @FindBy(id = "roleofPersonApprovedData")
     private WebElement dataCollectorRole;
 
-    @FindBy(id = "emailofPersonCollectedData")
+    @FindBy(id = "emailofPersonApprovedData")
     private WebElement dataCollectorEmail;
 
     @FindBy(id = "nameofCountryContact")
@@ -70,8 +71,18 @@ public class InputForm extends BasePage {
     @FindBy(css = ".success")
     private WebElement successMessage;
 
-    @FindBy( id = "health-indicator-questionnaire-heading")
+    @FindBy(id = "health-indicator-questionnaire-heading")
     private WebElement questionnaireHeading;
+
+    @FindBy(xpath = "//*[contains(text(),'Please correct the below highlighted fields.')]")
+    private WebElement invalidFormErrorMessageText;
+
+    @FindBy(xpath = "//*[contains(text(),'Form saved successfully!')]")
+    private WebElement saveSuccessMessage;
+
+    @FindBy(xpath = "//button[text()=' Save as Draft']")
+    private WebElement saveBtn;
+
 
     public InputForm() {
 
@@ -88,12 +99,13 @@ public class InputForm extends BasePage {
 
     }
 
-    public boolean doesFormHaveErrors() {
-        return waitForElementToBeVisible(countryName).getAttribute("class").contains("has-error");
+    public boolean isErrorMessageThrownIntheForm() {
+        sleep(1);
+        return invalidFormErrorMessageText.isDisplayed();
     }
 
     public void enterValidResponse(HashMap<String, String> data) {
-        autoCompleteSearch(countryName, "eac-container-countryName", data.get("countryName"));
+//        autoCompleteSearch(countryName, "eac-container-countryName", data.get("countryName"));
         organisation.sendKeys(data.get("organisation"));
         date.sendKeys(data.get("date"));
         dataEntryName.sendKeys(data.get("dataEntryName"));
@@ -111,8 +123,8 @@ public class InputForm extends BasePage {
         resource4.sendKeys(data.get("resource4"));
         resource5.sendKeys(data.get("resource5"));
         countrySummary.sendKeys(data.get("countrySummary"));
-        enterIndicatorScores(data);
-        submitForm();
+//        enterIndicatorScores(data);
+//        submitForm();
     }
 
 
@@ -124,7 +136,7 @@ public class InputForm extends BasePage {
     private void enterIndicatorScores(HashMap<String, String> data) {
         List<WebElement> indicatorElements = driver.findElements(By.cssSelector(".accordian"));
         int counter;
-        for(WebElement indicatorElement : indicatorElements) {
+        for (WebElement indicatorElement : indicatorElements) {
             counter = indicatorElements.indexOf(indicatorElement) + 1;
             int indicatorPhase = Integer.parseInt(data.get("indicator" + counter + "Score")) + 1;
             focusOnElement(indicatorElement);
@@ -158,5 +170,22 @@ public class InputForm extends BasePage {
 
     public void navigateToQuestionnairePage(String URL) {
         visitUrl(URL);
+    }
+
+    public boolean isQuestionnaireFormOpenedFor(String countryName) {
+        String countryPageTitle = "//span[@class='page-title'][contains(text(),'" + countryName + "')]";
+//                                "//span[@class='page-title'][contains(text(),'Azerbaijan')]")
+
+        return waitForElementToBeVisible(By.xpath(countryPageTitle)).isDisplayed();
+    }
+
+
+    public void clickOnSaveBtn() {
+        saveBtn.click();
+    }
+
+    public boolean isSavedsuccessfully() {
+        return isElementVisible(saveSuccessMessage);
+
     }
 }

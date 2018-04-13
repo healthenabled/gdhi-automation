@@ -4,23 +4,26 @@ This scenario verifies the various functionalities related to the overall digita
      
 ## User submits responses to a country and verifies various details
 
-* User opens the application url in a browser
-* The default map view appears
-* User navigates to list of countries page
-* User should see list of countries along with phases
-* User goes to the map page
-* User searches for "Sri Lanka"
-* User will not see the digital health indicator data in the map panel
-* User will see the context data in the map panel
 * User navigates to admin page
 * User generates input form URL for "Sri Lanka"
 * User copies the form link for "Sri Lanka"
 * User navigates to the input form for "Sri Lanka"
 * User submits the form without entering any details
 * User should see error messages for the mandatory fields
-* User provides valid responses for "Sri Lanka" to the questionnairre
+//* User provides valid responses for "Sri Lanka" to the questionnairre
+* User fills the form for "Sri Lanka" with contact and resource information
+* User should be able to save the partially filled form successfully
+* User should not be able to submit the partially filled form
 //* User should be able to save the data for "Sri Lanka" without any validation errors thrown
 //* User views the submitted responses for "Sri Lanka"
+//* User opens the application url in a browser
+//* The default map view appears
+//* User navigates to list of countries page
+//* User should see list of countries along with phases
+//* User goes to the map page
+//* User searches for "Sri Lanka"
+//* User will not see the digital health indicator data in the map panel
+//* User will see the context data in the map panel
 //* User goes to the methodology page
 //* User goes to the list of indicators page from the methodology page
 //* User goes to the map page

@@ -32,7 +32,7 @@ public class AdminPage extends BasePage {
     @FindBy(xpath = "//*[contains(text(),'URL Copied Successfully')]")
     private WebElement copyLinkSuccessMessageText;
 
-    @FindBy(xpath = "//input[@id='url-box']")
+    @FindBy(id = "url-box")
     private WebElement urlBox;
 
     public AdminPage() {
@@ -69,9 +69,11 @@ public class AdminPage extends BasePage {
     }
 
     public String copyCountryQuestionnaireLink() throws IOException, UnsupportedFlavorException {
-        Toolkit toolkit = Toolkit.getDefaultToolkit();
-        Clipboard clipboard = toolkit.getSystemClipboard();
-        String result = (String) clipboard.getData(DataFlavor.stringFlavor);
+        String result = urlBox.getAttribute("value");
+//        Toolkit toolkit = Toolkit.getDefaultToolkit();
+//        Clipboard clipboard = toolkit.getSystemClipboard();
+//        String result = (String) clipboard.getData(DataFlavor.stringFlavor);
+
 //        System.out.println("String from Clipboard:" + result);
         System.out.println("URL for country is " + result);
         return result;

@@ -10,12 +10,13 @@ This scenario verifies the various functionalities related to the overall digita
 * User navigates to the input form for "Sri Lanka"
 * User submits the form without entering any details
 * User should see error messages for the mandatory fields
-//* User provides valid responses for "Sri Lanka" to the questionnairre
 * User fills the form for "Sri Lanka" with contact and resource information
 * User should be able to save the partially filled form successfully
 * User should not be able to submit the partially filled form
-//* User should be able to save the data for "Sri Lanka" without any validation errors thrown
-//* User views the submitted responses for "Sri Lanka"
+* User fills the form for "Sri Lanka" with health indicator answers
+* User should be able to submit the data for "Sri Lanka" without any validation errors thrown
+* User views the submitted responses for "Sri Lanka" in read only format after submission
+* User navigates to review URL for "Sri Lanka"
 //* User opens the application url in a browser
 //* The default map view appears
 //* User navigates to list of countries page

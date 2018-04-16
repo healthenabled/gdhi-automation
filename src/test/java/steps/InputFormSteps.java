@@ -4,6 +4,7 @@ import com.thoughtworks.gauge.Step;
 import junit.framework.TestCase;
 
 import static data.DataFactory.getValidInputFormDataFor;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class InputFormSteps extends BaseStep {
@@ -43,4 +44,30 @@ public class InputFormSteps extends BaseStep {
     }
 
 
+    @Step("User fills the form for <Sri Lanka> with health indicator answers")
+    public void user_fills_indicator_info_For(String countryName) {
+        System.out.println("Entering indicator scores for Sri lanka");
+        inputForm.enterIndicatorScores(getValidInputFormDataFor(countryName));
+
+    }
+
+    @Step("User should be able to submit the data for <Sri Lanka> without any validation errors thrown")
+    public void fills_form_without_errors(String countryNAme) {
+        inputForm.submitForm();
+        inputForm.isSubmittedSuccessfully();
+
+    }
+
+    @Step("User views the submitted responses for <Sri Lanka> in read only format after submission")
+    public void userViewsReadOnlyFormatOfInputForm(String countryName) {
+        assertFalse(inputForm.isFormReadOnly());
+        assertFalse(inputForm.isQuestionnaireInfoDisabled());
+
+    }
+
+    @Step("User navigates to review URL for <Sri Lanka>")
+    public void user_nvaigates_to_review_URL(String countryName) {
+        inputForm.navigateToReviewURLOf(specDataStore.get(countryName).toString());
+
+    }
 }

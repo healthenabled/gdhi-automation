@@ -4,6 +4,7 @@ import com.thoughtworks.gauge.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.HashMap;
@@ -83,6 +84,14 @@ public class InputForm extends BasePage {
     @FindBy(xpath = "//button[text()=' Save as Draft']")
     private WebElement saveBtn;
 
+    @FindBy(css = "button.submit-btn.btn.btn-green")
+    private WebElement submitBtn;
+
+    @FindBy(xpath = "//span[text()='Not Available or Not Applicable']")
+    private WebElement NATextElement;
+
+    @FindBy(css = "div.accordion.expanded>div.accordion-content>div>div>div.row.description_container>textarea.description")
+    private WebElement questionRationaleText;
 
     public InputForm() {
 
@@ -133,38 +142,33 @@ public class InputForm extends BasePage {
         return isElementVisible(successMessage);
     }
 
-    private void enterIndicatorScores(HashMap<String, String> data) {
-        List<WebElement> indicatorElements = driver.findElements(By.cssSelector(".accordian"));
+    public void enterIndicatorScores(HashMap<String, String> data) {
+        System.out.println("inside indicator scores");
+        submitBtn.click();
+        List<WebElement> indicatorElements = driver.findElements(By.cssSelector("div.accordion.expanded>div.accordion-content>div>div"));
         int counter;
         for (WebElement indicatorElement : indicatorElements) {
-            counter = indicatorElements.indexOf(indicatorElement) + 1;
+
+                        counter = indicatorElements.indexOf(indicatorElement) + 1;
             int indicatorPhase = Integer.parseInt(data.get("indicator" + counter + "Score")) + 1;
-            focusOnElement(indicatorElement);
 
-            WebElement accordian = indicatorElement.findElement(By.xpath(".."));
-            accordian.findElement(By.cssSelector("span")).click();
-            sleep(1);
-
-            WebElement accordianContent = accordian.findElement(By.cssSelector(".accordian-content"));
-            focusOnElement(accordianContent);
-            chooseIndicatorPhase(accordianContent, indicatorPhase);
-
-            WebElement rationale = accordianContent.findElement(By.cssSelector(".description"));
+             chooseIndicatorPhase(indicatorElement,indicatorPhase);
+            WebElement rationale = indicatorElement.findElement(By.cssSelector("div.row.description_container>textarea"));
             focusOnElement(rationale);
             rationale.sendKeys("Rationale for indicator " + counter);
         }
     }
 
     private void chooseIndicatorPhase(WebElement parentElement, int phase) {
-        String radioCss = "input[value='" + phase + "']";
-        WebElement score = parentElement.findElement(By.cssSelector(radioCss));
-        focusOnElement(score);
-        waitForElementToBeClickable(score);
-        score.click();
+
+        parentElement.findElement(By.xpath("//span[text()='Not Available or Not Applicable']"));
+        scrollToElementAndClick(NATextElement);
+//        waitForElementToBeVisible(NATextElement).click();
+
+
     }
 
     public void validateQuestionnaireHeading() {
-//        sleep(2);
         assert (questionnaireHeading.getText().contains("GDHI Country Data Collection Form"));
     }
 
@@ -174,8 +178,6 @@ public class InputForm extends BasePage {
 
     public boolean isQuestionnaireFormOpenedFor(String countryName) {
         String countryPageTitle = "//span[@class='page-title'][contains(text(),'" + countryName + "')]";
-//                                "//span[@class='page-title'][contains(text(),'Azerbaijan')]")
-
         return waitForElementToBeVisible(By.xpath(countryPageTitle)).isDisplayed();
     }
 
@@ -186,6 +188,21 @@ public class InputForm extends BasePage {
 
     public boolean isSavedsuccessfully() {
         return isElementVisible(saveSuccessMessage);
+        }
 
+    public boolean isFormReadOnly() {
+
+        return date.isEnabled();
+    }
+
+    public boolean isQuestionnaireInfoDisabled() {
+
+        return questionRationaleText.isEnabled();
+    }
+
+    public void navigateToReviewURLOf(String countryURL) {
+        String reviewURL=countryURL.concat("/review");
+        System.out.println("REview URL is.... "+reviewURL);
+        visitUrl(reviewURL);
     }
 }

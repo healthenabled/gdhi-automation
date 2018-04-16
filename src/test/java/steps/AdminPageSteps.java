@@ -28,13 +28,15 @@ public class AdminPageSteps extends BaseStep {
     public void copyFormLink(String countryName) throws IOException, UnsupportedFlavorException {
 
         assertTrue(adminPage.verifycopyLinkForURLIsDisplayed());
-       assertTrue(adminPage.verifycopyLinkSuccessMessage());
-        specDataStore.put(countryName,adminPage.copyCountryQuestionnaireLink());
+        assertTrue(adminPage.verifycopyLinkSuccessMessage());
+        specDataStore.put(countryName, adminPage.copyCountryQuestionnaireLink());
     }
 
     @Step("User navigates to the input form for <Sri Lanka>")
     public void navigateToQuestionnaireForm(String countryName) {
         inputForm.navigateToQuestionnairePage(specDataStore.get(countryName).toString());
+//        inputForm.navigateToQuestionnairePage("http://gdhi-qa-lb-555763789.us-east-1.elb.amazonaws.com/health_indicator_questionnaire/9ccf4e92-b3a8-494f-94b1-475aaff5c0d6");
         inputForm.isQuestionnaireFormOpenedFor(countryName);
     }
 }
+

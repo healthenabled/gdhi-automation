@@ -75,7 +75,7 @@ public class InputForm extends BasePage {
     @FindBy(id = "health-indicator-questionnaire-heading")
     private WebElement questionnaireHeading;
 
-    @FindBy(xpath = "//*[contains(text(),'Please correct the below highlighted fields.')]")
+    @FindBy(xpath = "//*[contains(text(),'Please correct the highlighted fields.')]")
     private WebElement invalidFormErrorMessageText;
 
     @FindBy(xpath = "//*[contains(text(),'Form saved successfully!')]")

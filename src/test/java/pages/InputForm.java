@@ -128,9 +128,9 @@ public class InputForm extends BasePage {
         countryContactEmail.sendKeys(data.get("countryContactEmail"));
         resource1.sendKeys(data.get("resource1"));
         resource2.sendKeys(data.get("resource2"));
-        resource3.sendKeys(data.get("resource3"));
-        resource4.sendKeys(data.get("resource4"));
-        resource5.sendKeys(data.get("resource5"));
+//        resource3.sendKeys(data.get("resource3"));
+//        resource4.sendKeys(data.get("resource4"));
+//        resource5.sendKeys(data.get("resource5"));
         countrySummary.sendKeys(data.get("countrySummary"));
 //        enterIndicatorScores(data);
 //        submitForm();
@@ -151,8 +151,10 @@ public class InputForm extends BasePage {
 
                         counter = indicatorElements.indexOf(indicatorElement) + 1;
             int indicatorPhase = Integer.parseInt(data.get("indicator" + counter + "Score")) + 1;
+//            sleep(1);
+            indicatorElement.findElement(By.cssSelector("div.scores>label.radio-container>input")).click();
 
-             chooseIndicatorPhase(indicatorElement,indicatorPhase);
+//             chooseIndicatorPhase(indicatorElement,indicatorPhase);
             WebElement rationale = indicatorElement.findElement(By.cssSelector("div.row.description_container>textarea"));
             focusOnElement(rationale);
             rationale.sendKeys("Rationale for indicator " + counter);
@@ -160,9 +162,11 @@ public class InputForm extends BasePage {
     }
 
     private void chooseIndicatorPhase(WebElement parentElement, int phase) {
+sleep(1);
+        parentElement.findElement(By.xpath("//span[text()='Not Available or Not Applicable']/following-sibling::input")).sendKeys();
 
-        parentElement.findElement(By.xpath("//span[text()='Not Available or Not Applicable']"));
-        scrollToElementAndClick(NATextElement);
+//        scrollToElementAndClick(parentElement.findElement(By.xpath("//span[text()='Not Available or Not Applicable']/following-sibling::input")));
+//        scrollToElementAndClick(NATextElement);
 //        waitForElementToBeVisible(NATextElement).click();
 
 

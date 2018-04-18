@@ -9,11 +9,11 @@ This scenario verifies the lis of indicators questions
 * User navigates to the list of indicators page
 * User should see below list of indicators
     | Indicators                         |
-    | Leadership and Governance          |
-    | Strategy and Investment            |
-    | Legislation, Policy, and Compliance|
-    | Workforce                          |
-    | Standards and Interoperability     |
-    | Infrastructure                     |
-    | Services and Applications          |
+    | leadership and governance          |
+    | strategy and investment            |
+    | legislation, policy, and compliance|
+    | workforce                          |
+    | standards and interoperability     |
+    | infrastructure                     |
+    | services and applications          |
 //* User should see the list of indicators questionnaire

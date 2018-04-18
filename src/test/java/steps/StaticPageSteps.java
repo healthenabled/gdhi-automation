@@ -21,7 +21,11 @@ public class StaticPageSteps extends BaseStep {
 
     @Step("User should see below list of indicators <table>")
     public void verifyIndicatorList(Table table) {
-        listOfIndicatorsPage.isLoaded();
+        assertTrue(listOfIndicatorsPage.isLoaded());
+        System.out.println(table.getColumnValues("Indicators"));
+        System.out.println("Actual indicators:::" +listOfIndicatorsPage.getActualListOfIndicators());
         assertTrue(listOfIndicatorsPage.getActualListOfIndicators().containsAll(table.getColumnValues("Indicators")));
     }
+
+
 }

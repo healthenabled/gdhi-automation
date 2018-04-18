@@ -36,7 +36,7 @@ public class LandingPage extends BasePage {
     @FindBy(css = "//div[@class='footer']//span/a[@href='/methodology']")
     private WebElement footerMethodologyLink;
 
-    @FindBy(css = "//div[@class='footer']//span/a[@href='/indicators_info']")
+    @FindBy(xpath = "//div[@class='footer']//span/a[@href='/indicators_info']")
     private WebElement listOfIndicatorFooterLink;
 
     @FindBy(css = "//div[@class='footer']//span/a[@href='/api/export_global_data']")

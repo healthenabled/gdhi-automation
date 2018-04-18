@@ -28,10 +28,10 @@ public class ListOfIndicatorsPage extends BasePage {
 
     public List getActualListOfIndicators() {
         List<String> actualIndicators = new ArrayList();
-        List<WebElement> actualIndicatorText = getListofElements(By.xpath("//ul[@id='v-for-categoryNames']/li[@class='l-box']/a"));
+        List<WebElement> actualIndicatorText = getListofElements(By.xpath("//div[@class='accordion expanded']/div[@class='align-No sub-header']"));
         for (WebElement element:actualIndicatorText) {
             System.out.println("Actual indicators " +element.getText());
-            actualIndicators.add(element.getText());
+            actualIndicators.add(element.getText().toLowerCase());
         }
         return actualIndicators;
     }

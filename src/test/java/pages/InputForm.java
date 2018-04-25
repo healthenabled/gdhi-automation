@@ -152,7 +152,7 @@ public class InputForm extends BasePage {
                         counter = indicatorElements.indexOf(indicatorElement) + 1;
             int indicatorPhase = Integer.parseInt(data.get("indicator" + counter + "Score")) + 1;
             sleep(1);
-            indicatorElement.findElement(By.cssSelector("div.scores>label.radio-container>input")).click();
+            indicatorElement.findElement(By.cssSelector("div.scores:nth-child(3)>label.radio-container")).click();
 
 //             chooseIndicatorPhase(indicatorElement,indicatorPhase);
             WebElement rationale = indicatorElement.findElement(By.cssSelector("div.row.description_container>textarea"));

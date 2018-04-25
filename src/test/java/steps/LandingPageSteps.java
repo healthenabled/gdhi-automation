@@ -15,7 +15,8 @@ public class LandingPageSteps extends BaseStep {
 
     @Step("The default map view appears")
     public void The_default_map_view_appears() {
-        assertEquals(landingPage.getIndicatorPanelName(), "State of Digital Health around the world today");
+
+        assertEquals(landingPage.getIndicatorPanelName().toLowerCase(), "State of Digital Health around the world today".toLowerCase());
         assertEquals(landingPage.getPanelButtonName().toLowerCase(), "VIEW COUNTRIES".toLowerCase());
     }
 

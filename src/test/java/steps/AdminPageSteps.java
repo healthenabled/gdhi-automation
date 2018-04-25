@@ -15,7 +15,6 @@ public class AdminPageSteps extends BaseStep {
     public void naviagteToAdminPage() {
         adminPage.visit();
         adminPage.waitForPageToLoad();
-
     }
 
     @Step("User generates input form URL for <Sri Lanka>")
@@ -39,4 +38,3 @@ public class AdminPageSteps extends BaseStep {
         inputForm.isQuestionnaireFormOpenedFor(countryName);
     }
 }
-

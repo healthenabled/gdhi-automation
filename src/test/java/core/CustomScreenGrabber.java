@@ -1,6 +1,5 @@
 package core;
 
-import com.thoughtworks.gauge.Gauge;
 import com.thoughtworks.gauge.screenshot.ICustomScreenshotGrabber;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;

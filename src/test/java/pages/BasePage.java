@@ -100,4 +100,10 @@ class BasePage {
         return driver.findElements(xpath);
     }
 
+//    public void enterTextInPopup(){
+//        WebDriverWait wait = new WebDriverWait(driver, 10);
+//        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+//        alert.(new UserAndPassword(username, password));
+//    }
+
 }

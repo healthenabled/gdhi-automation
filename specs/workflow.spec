@@ -17,20 +17,18 @@ This scenario verifies the various functionalities related to the overall digita
 * User should be able to submit the data for "Sri Lanka" without any validation errors thrown
 * User views the submitted responses for "Sri Lanka" in read only format after submission
 * User navigates to review URL for "Sri Lanka"
+* User edits the form for "Sri Lanka" and removes data
+//* User publishes the data
+//* User should be able to see validations getting applied on publish
+//* User should be able to update valid data on the form and publish
+//* User should be taken to admin page on publish successful
+//* User shoudl be able to see
 //* User opens the application url in a browser
 //* The default map view appears
 //* User navigates to list of countries page
-//* User should see list of countries along with phases
-//* User goes to the map page
-//* User searches for "Sri Lanka"
-//* User will not see the digital health indicator data in the map panel
-//* User will see the context data in the map panel
-//* User goes to the methodology page
-//* User goes to the list of indicators page from the methodology page
-//* User goes to the map page
-//* User searches for "Sri Lanka"
-//* User should see the digital health indicator data
+//* User should see the published country in list of countries page along with phase
+//* User navigates to country details page for "Sri Lanka"
+////* User should see the digital health indicator data
 //* User goes the country details page
 //* User should see the data they have submitted for "Sri Lanka"
-//* User should see the overall phase calculated correctly for a country
 //* User should see the footer information

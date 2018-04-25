@@ -70,4 +70,10 @@ public class InputFormSteps extends BaseStep {
         inputForm.navigateToReviewURLOf(specDataStore.get(countryName).toString());
 
     }
+
+    @Step("User edits the form for <Sri Lanka> and removes data")
+    public void user_edits_form_for(String  countryName) {
+
+
+    }
 }

@@ -26,16 +26,25 @@ public class Driver {
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.addArguments("headless");
                 chromeOptions.addArguments("window-size=1280x800");
+//                chromeOptions.setCapability("chrome.switches", Arrays.asList("--disable-javascript"));
+//                chromeOptions.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.ACCEPT);
+
                 webDriver = new ChromeDriver(chromeOptions);
+                System.out.println("starting in Headless mode");
+
+
+
+
             } else {
                 System.out.println("Starting ChromeDriver...");
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("--kiosk");
                 options.addArguments("--no-sandbox");
-//                options.addArguments("--start-maximized");
-////                 options.addArguments("--start-fullscreen");
+//                  options.setCapability("chrome.switches", Arrays.asList("--disable-javascript"));
                 webDriver = new ChromeDriver(options);
-//                webDriver.manage().window().maximize();
+
+                System.out.println("starting in normal mode");
+
             }
         }
 

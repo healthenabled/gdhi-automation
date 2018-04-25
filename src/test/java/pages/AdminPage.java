@@ -43,6 +43,7 @@ public class AdminPage extends BasePage {
     public void visit() {
         System.out.println("Opening URL " + System.getenv("ADMIN_URL"));
         visitUrl(System.getenv("ADMIN_URL"));
+//        visitUrl("http://admin:admin@35.170.87.166:8080/admin/");
     }
 
     public void waitForPageToLoad() {

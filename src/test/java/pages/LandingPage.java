@@ -56,6 +56,7 @@ public class LandingPage extends BasePage {
     public void waitForPageToLoad() {
 
             waitForElementToBeVisible(panelButton);
+            sleep(2);
         }
 
     public String getIndicatorPanelName() {

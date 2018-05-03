@@ -18,6 +18,9 @@ public class DataFactory {
         data.put("countryContactName", "Mr.Minister");
         data.put("countryContactRole", "Union Health Minister");
         data.put("countryContactEmail", "country_contact@country.org");
+        data.put("countryContactNameInReview", "Mr.Union Minister");
+        data.put("countryContactRoleInReview", "Union Health Minister of SriLanka");
+        data.put("countryContactEmailInReview", "country_contact_review@country.org");
         data.put("resource1", "http://resource1.country.org");
         data.put("resource2", "http://resource2.country.org");
         data.put("resource3", "http://resource3.country.org");

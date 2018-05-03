@@ -3,7 +3,7 @@
 This scenario verifies the various functionalities related to the overall digital health maturity
      
 ## User submits responses to a country and verifies various details
-
+//
 * User navigates to admin page
 * User generates input form URL for "Sri Lanka"
 * User copies the form link for "Sri Lanka"
@@ -16,9 +16,10 @@ This scenario verifies the various functionalities related to the overall digita
 * User fills the form for "Sri Lanka" with health indicator answers
 * User should be able to submit the data for "Sri Lanka" without any validation errors thrown
 * User views the submitted responses for "Sri Lanka" in read only format after submission
-* User navigates to review URL for "Sri Lanka"
+* User navigates to admin page
+* User navigates to review URL for "Sri Lanka" from admin page
 * User edits the form for "Sri Lanka" and removes data
-//* User publishes the data
+* User publishes the data for "Sri Lanka"
 //* User should be able to see validations getting applied on publish
 //* User should be able to update valid data on the form and publish
 //* User should be taken to admin page on publish successful

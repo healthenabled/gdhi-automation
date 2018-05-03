@@ -1,9 +1,9 @@
 package steps;
 
 import com.thoughtworks.gauge.Step;
-import junit.framework.TestCase;
 
 import static data.DataFactory.getValidInputFormDataFor;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -65,15 +65,34 @@ public class InputFormSteps extends BaseStep {
 
     }
 
-    @Step("User navigates to review URL for <Sri Lanka>")
+    @Step("User navigates to review URL for <Sri Lanka> from admin page")
     public void user_nvaigates_to_review_URL(String countryName) {
-        inputForm.navigateToReviewURLOf(specDataStore.get(countryName).toString());
+
+        adminPage.navigateToReviewPendingSection();
+//        inputForm.navigateToQuestionnairePage("http://admin:admin@35.170.87.166:8080/admin/health_indicator_questionnaire/f5b497ff-450a-4d2c-8819-62cba609f29f/review");
+        assertTrue(adminPage.isCountryDisplayedInReviewPendingSection(countryName));
+//        inputForm.navigateToReviewURLOf(specDataStore.get(countryName).toString());
+        inputForm.navigateToReviewURLOf(countryName);
 
     }
 
     @Step("User edits the form for <Sri Lanka> and removes data")
-    public void user_edits_form_for(String  countryName) {
+    public void user_edits_form_for(String countryName) {
+        assertTrue(inputForm.verifyAcceptBtnPresent());
+        assertTrue(inputForm.verifyRejectBtnPresent());
+        assertTrue(inputForm.verifySaveBtnPresent());
+        inputForm.editReviewForm(getValidInputFormDataFor(countryName));
+        assertTrue(inputForm.isSaveFormSuccessful());
+        assertTrue(inputForm.verifyDownloadPDF());
 
+    }
+
+    @Step("User publishes the data for <Sri Lanka>")
+    public void publishData(String countryName) {
+        assertEquals(inputForm.verifyPublishReviewDataConfirmationText(),"You are about to publish digital health index form for Sri Lanka, this cannot be reverted. Do you want to continue?");
+//        inputForm.confirmPublisData();
+
+        assertTrue(inputForm.isPublishSuccess());
 
     }
 }

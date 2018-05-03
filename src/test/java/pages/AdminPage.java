@@ -35,6 +35,12 @@ public class AdminPage extends BasePage {
     @FindBy(id = "url-box")
     private WebElement urlBox;
 
+    @FindBy(xpath = "//ul[@class='tablist']/li[text()='Review Pending']")
+    WebElement reviewPendingTab;
+
+    @FindBy(xpath = "//div[@class='tab-content'][2]/div/table[@id='fifthTable']/tbody/tr/td[text()='Sri Lanka']")
+    private WebElement countryNameInTable;
+
     public AdminPage() {
         PageFactory.initElements(driver, this);
     }
@@ -87,4 +93,13 @@ public class AdminPage extends BasePage {
     }
 
 
+    public void navigateToReviewPendingSection() {
+        sleep(2);
+        waitForElementToBeVisible(reviewPendingTab).click();
+    }
+
+    public boolean isCountryDisplayedInReviewPendingSection(String countryName) {
+
+    return countryNameInTable.isDisplayed();
+    }
 }

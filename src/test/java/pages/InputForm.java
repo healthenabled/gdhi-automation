@@ -274,13 +274,15 @@ sleep(1);
         publishBtn.click();
         String alertText = alertMessage.getText();
         alertConfirmPublishBtn.click();
+        sleep(2);
         return alertText;
 
 
     }
 
     public boolean isPublishSuccess() {
-        sleep(2);
+
         return publishSuccessMessage.isDisplayed();
+
     }
 }

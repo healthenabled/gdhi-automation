@@ -11,7 +11,7 @@ public class CountryPage extends BasePage {
     @FindBy(css = ".country-name")
     private WebElement countryNameHeading;
 
-    @FindBy(css = ".phase-content .score")
+    @FindBy(css = "div.score.phase2")
     private WebElement overallScore;
 
     @FindBy(css = ".health-indicators")
@@ -26,13 +26,13 @@ public class CountryPage extends BasePage {
     @FindBy(css = ".country-summary")
     private WebElement countrySummarySection;
 
-    @FindBy(css = ".country-text")
+    @FindBy(xpath = "//div[contains(@class,'country-summary-text')]")
     private WebElement countrySummaryText;
 
-    @FindBy(css = ".country-summary-title")
+    @FindBy(xpath = "//div[contains(@class,'country-summary-title')][text()='Resources']")
     private WebElement resourcesText;
 
-    @FindBy(css = "//ul[@class='country-text']")
+    @FindBy(xpath = "//ul[@class='country-text']")
     private WebElement resourcesSection;
 
     public CountryPage() {

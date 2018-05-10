@@ -3,6 +3,7 @@ package steps;
 import com.thoughtworks.gauge.Step;
 
 import static data.DataFactory.getValidInputFormDataFor;
+import static java.lang.Thread.sleep;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -16,7 +17,6 @@ public class InputFormSteps extends BaseStep {
 
     @Step("User submits the form without entering any details")
     public void User_submits_empty_form() throws Exception {
-
         inputForm.submitForm();
     }
 
@@ -48,7 +48,6 @@ public class InputFormSteps extends BaseStep {
     public void user_fills_indicator_info_For(String countryName) {
         System.out.println("Entering indicator scores for Sri lanka");
         inputForm.enterIndicatorScores(getValidInputFormDataFor(countryName));
-
     }
 
     @Step("User should be able to submit the data for <Sri Lanka> without any validation errors thrown")
@@ -91,8 +90,6 @@ public class InputFormSteps extends BaseStep {
     public void publishData(String countryName) {
         assertEquals(inputForm.verifyPublishReviewDataConfirmationText(),"You are about to publish digital health index form for Sri Lanka, this cannot be reverted. Do you want to continue?");
 //        inputForm.confirmPublisData();
-
         assertTrue(inputForm.isPublishSuccess());
-
     }
 }
